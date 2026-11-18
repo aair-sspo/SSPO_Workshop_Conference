@@ -182,6 +182,7 @@ p{margin:0 0 14px;max-width:65ch}
 /* ===== Participant list ===== */
 .lists > div{background:var(--white);border-radius:var(--r);box-shadow:var(--shadow);padding:22px}
 .type-card{display:grid;gap:6px;align-content:start}
+.type-card .dates{margin:8px 0 6px}
 .type-tag{justify-self:start;margin:0;font-family:var(--type);font-weight:500;font-size:13px;border:1.5px solid var(--line);border-radius:999px;padding:1px 12px;background:var(--blue)}
 .type-tag.pink{background:var(--pink)}
 .type-title{font-family:var(--display);font-weight:600;font-size:28px;line-height:1.1;letter-spacing:-.04em;color:var(--lav-strong);margin:0}
@@ -422,7 +423,7 @@ footer .org{grid-column:1/-1;justify-self:center;margin:4px 0 0;font-size:13px;c
     <a class="event" href="#digital-po-cpd">
       <div class="date"><span class="m">JAN</span><span class="d">21 &amp; 28</span><span class="y">2570</span></div>
       <div class="body">
-        <div class="tags"><span>CPD workshop</span><span>Online + Onsite</span><span class="on">Free · 30 seats</span></div>
+        <div class="tags"><span>CPD workshop</span><span>Online + Onsite</span><span class="on">Free · Onsite 30 seats</span></div>
         <h3>Digital P&amp;O <b>Fabrication</b></h3>
         <p>โครงการพัฒนาศักยภาพนักกายอุปกรณ์ด้านเทคโนโลยีดิจิทัล และการพิมพ์สามมิติ ร่วมกับ Instalimb และ Paramount Bed (Thailand)</p>
         <span class="go">See details &amp; register →</span>
@@ -470,7 +471,7 @@ footer .org{grid-column:1/-1;justify-self:center;margin:4px 0 0;font-size:13px;c
     <a class="event" href="#digital-po-cpd">
       <div class="date"><span class="m">JAN</span><span class="d">21 &amp; 28</span><span class="y">2570</span></div>
       <div class="body">
-        <div class="tags"><span>CPD workshop</span><span>Online + Onsite</span><span class="on">Free · 30 seats</span></div>
+        <div class="tags"><span>CPD workshop</span><span>Online + Onsite</span><span class="on">Free · Onsite 30 seats</span></div>
         <h3>Digital P&amp;O <b>Fabrication</b></h3>
         <p>โครงการพัฒนาศักยภาพนักกายอุปกรณ์ด้านเทคโนโลยีดิจิทัล และการพิมพ์สามมิติ ร่วมกับ Instalimb และ Paramount Bed (Thailand)</p>
         <span class="go">See details &amp; register →</span>
@@ -507,7 +508,7 @@ footer .org{grid-column:1/-1;justify-self:center;margin:4px 0 0;font-size:13px;c
     <p class="label"><a href="#events">← All events</a> · CPD workshop</p>
     <h1 class="headline">Digital P&amp;O <b>Fabrication</b></h1>
     <p class="sub">โครงการพัฒนาศักยภาพนักกายอุปกรณ์ด้านเทคโนโลยีดิจิทัล และการพิมพ์สามมิติ</p>
-    <div class="chips"><span class="chip">21 Jan 2570 · Online</span><span class="chip">28 Jan 2570 · Onsite</span><span class="chip pink">Free · 30 seats</span></div>
+    <div class="chips"><span class="chip">21 Jan 2570 · Online</span><span class="chip">28 Jan 2570 · Onsite</span><span class="chip pink">Free · Onsite 30 seats</span></div>
     <div class="actions"><a class="btn" href="#register">Register</a><a class="btn ghost" href="#schedule">Schedule</a><a class="btn ghost" href="#participants">Participants</a></div>
   </div>
 </header>
@@ -541,7 +542,7 @@ footer .org{grid-column:1/-1;justify-self:center;margin:4px 0 0;font-size:13px;c
       <article class="session">
         <h3>Day 2 · <i>hands-on</i></h3>
         <p class="when">Thu 28 Jan 2570 · 09:00–16:30 · SSPO</p>
-        <p class="where">ภาคปฏิบัติ ณ โรงเรียนกายอุปกรณ์สิรินธร คณะแพทยศาสตร์ศิริราชพยาบาล</p>
+        <p class="where">ภาคปฏิบัติ ณ โรงเรียนกายอุปกรณ์สิรินธร (ประเภทที่ 2) · ประเภทที่ 1 เข้าร่วมแบบออนไลน์</p>
         <ol class="agenda">
           <li class="brk"><time>08:30–09:00</time><span>ลงทะเบียน</span></li>
           <li><time>09:00–10:00</time><span>บทนำ: กายอุปกรณ์ดิจิทัลและกระบวนการทำงานแบบดิจิทัลของ Instalimb</span></li>
@@ -558,26 +559,53 @@ footer .org{grid-column:1/-1;justify-self:center;margin:4px 0 0;font-size:13px;c
   </div>
 </section>
 
+<section class="section" id="types">
+  <div class="wrap">
+    <h2>two ways <b>to join</b></h2>
+    <div class="lists two">
+      <div class="type-card">
+        <p class="type-tag">ประเภทที่ 1</p>
+        <h3 class="type-title">Online <b>both days</b></h3>
+        <ol class="dates">
+          <li><time>21 Jan 2570 · 14:00–17:00</time><span>ภาคบรรยายผ่าน Zoom</span></li>
+          <li><time>28 Jan 2570 · 09:00–16:30</time><span>เข้าร่วมกิจกรรมภาคปฏิบัติแบบออนไลน์</span></li>
+        </ol>
+        <p class="type-sub">ไม่จำกัดจำนวน</p>
+      </div>
+      <div class="type-card">
+        <p class="type-tag pink">ประเภทที่ 2</p>
+        <h3 class="type-title">Online + <b>onsite</b></h3>
+        <ol class="dates">
+          <li><time>21 Jan 2570 · 14:00–17:00</time><span>ภาคบรรยายผ่าน Zoom</span></li>
+          <li class="key"><time>28 Jan 2570 · 09:00–16:30</time><span>ฝึกปฏิบัติ ณ โรงเรียนกายอุปกรณ์สิรินธร</span></li>
+        </ol>
+        <p class="type-sub">รับ 30 ท่านแรกเท่านั้น ลำดับที่ 31 เป็นต้นไปเป็นรายชื่อสำรอง</p>
+      </div>
+    </div>
+    <p class="lead"><strong>ต้องเข้าร่วมให้ครบทั้ง 2 วัน</strong> (ประเภทใดประเภทหนึ่ง) จึงจะได้รับคะแนน CPD ทั้งนี้คะแนนจะแตกต่างกันตามประเภทการเข้าร่วม</p>
+  </div>
+</section>
+
 <section class="section">
   <div class="wrap two">
     <div>
-      <h2>who <b>can join</b></h2>
+      <h2>good <b>to know</b></h2>
       <ul class="bullets">
-        <li><span>นักกายอุปกรณ์ ช่างกายอุปกรณ์ นักกายภาพบำบัด และผู้สนใจด้านกายอุปกรณ์ดิจิทัล</span></li>
-        <li><span>มีใบอนุญาตประกอบวิชาชีพกายอุปกรณ์ของประเทศไทย</span></li>
-        <li><span>รับผู้เข้าร่วมรวม 30 ท่าน (ณ สถานที่และออนไลน์)</span></li>
-        <li><span>การฝึกปฏิบัติ (Hands-on) เฉพาะผู้เข้าร่วม ณ สถานที่</span></li>
-        <li><span>ไม่เก็บค่าลงทะเบียน ค่าเรียน หรือค่าวัสดุ</span></li>
+        <li><span>ผู้สมัครต้องเป็นนักกายอุปกรณ์ชาวไทย และมีใบประกอบโรคศิลปะ</span></li>
+        <li><span>ไม่มีค่าใช้จ่ายในการลงทะเบียน และไม่มีค่าใช้จ่ายอื่นเพิ่มเติม</span></li>
+        <li><span>ไม่มีการสนับสนุนค่าที่พักและค่าเดินทาง</span></li>
+        <li><span>กิจกรรมจัดเป็นภาษาไทยและภาษาอังกฤษ</span></li>
+        <li><span>ต้องการหนังสือเชิญสำหรับหน่วยงานของท่าน ติดต่อ <a href="mailto:chotika.suv@mahidol.ac.th">chotika.suv@mahidol.ac.th</a></span></li>
       </ul>
     </div>
     <div>
       <h2>key <b>dates</b></h2>
       <ol class="dates">
         <li><time>Coming soon</time><span>เปิดรับสมัคร</span></li>
-        <li class="key"><time>7 Jan 2570</time><span>ปิดรับสมัคร หรือเมื่อครบ 30 ท่าน</span></li>
+        <li class="key"><time>7 Jan 2570</time><span>ปิดรับสมัคร</span></li>
         <li class="key"><time>11 Jan 2570</time><span>ประกาศรายชื่อผู้มีสิทธิ์เข้าร่วม</span></li>
         <li><time>21 Jan 2570</time><span>ภาคบรรยายออนไลน์ (Zoom)</span></li>
-        <li><time>28 Jan 2570</time><span>ภาคปฏิบัติ ณ โรงเรียนกายอุปกรณ์สิรินธร</span></li>
+        <li><time>28 Jan 2570</time><span>ภาคปฏิบัติ: ประเภทที่ 2 ณ โรงเรียนกายอุปกรณ์สิรินธร · ประเภทที่ 1 แบบออนไลน์</span></li>
       </ol>
     </div>
   </div>
@@ -590,17 +618,17 @@ footer .org{grid-column:1/-1;justify-self:center;margin:4px 0 0;font-size:13px;c
     <p class="list-status" id="listStatus">รายชื่อจะแสดงเมื่อเปิดรับสมัคร</p>
     <div class="lists two" id="lists" hidden>
       <div class="type-card">
-        <p class="type-tag">type 1</p>
-        <h3 class="type-title">Online <b>lecture</b></h3>
-        <p class="type-sub">ภาคบรรยายออนไลน์ผ่าน Zoom · ไม่จำกัดจำนวน</p>
+        <p class="type-tag">ประเภทที่ 1</p>
+        <h3 class="type-title">Online <b>both days</b></h3>
+        <p class="type-sub">Online ทั้ง 2 วัน · ไม่จำกัดจำนวน</p>
         <h4 class="list-head">Registered <span id="t1Count"></span></h4>
         <ol class="names" id="t1List"></ol>
         <p class="list-empty" id="t1Empty" hidden>ยังไม่มีผู้ลงทะเบียน</p>
       </div>
       <div class="type-card">
-        <p class="type-tag pink">type 2</p>
-        <h3 class="type-title">Onsite <b>hands-on</b></h3>
-        <p class="type-sub">ภาคบรรยาย + ภาคปฏิบัติ ณ โรงเรียนกายอุปกรณ์สิรินธร · รับ 30 ท่านแรก ลำดับที่ 31 เป็นต้นไปเป็นรายชื่อสำรอง และจะได้รับการติดต่อหากมีผู้สละสิทธิ์</p>
+        <p class="type-tag pink">ประเภทที่ 2</p>
+        <h3 class="type-title">Online + <b>onsite</b></h3>
+        <p class="type-sub">Online วันที่ 1 และ Onsite วันที่ 2 ณ โรงเรียนกายอุปกรณ์สิรินธร · รับ 30 ท่านแรก ลำดับที่ 31 เป็นต้นไปเป็นรายชื่อสำรอง และจะได้รับการติดต่อหากมีผู้สละสิทธิ์</p>
         <h4 class="list-head">Confirmed <span id="t2Count"></span></h4>
         <ol class="names" id="t2List"></ol>
         <p class="list-empty" id="t2Empty" hidden>ยังไม่มีผู้ลงทะเบียน</p>
@@ -616,7 +644,7 @@ footer .org{grid-column:1/-1;justify-self:center;margin:4px 0 0;font-size:13px;c
 <section class="section lav" id="register">
   <div class="wrap">
     <h2>sign <b>me up</b></h2>
-    <p class="lead">ลงทะเบียนผ่านแบบฟอร์มออนไลน์ รับจำนวนจำกัด 30 ท่าน ผู้มีสิทธิ์เข้าร่วมจะได้รับการแจ้งทางอีเมลภายในวันที่ 11 มกราคม 2570</p>
+    <p class="lead">ลงทะเบียนผ่านแบบฟอร์มออนไลน์ และเลือกประเภทที่ 1 (Online ทั้ง 2 วัน) หรือประเภทที่ 2 (Online วันที่ 1 และ Onsite วันที่ 2 รับ 30 ท่านแรก) ผู้มีสิทธิ์เข้าร่วมจะได้รับการแจ้งทางอีเมลภายในวันที่ 11 มกราคม 2570</p>
     <div class="actions"><a class="btn" id="regBtn" aria-disabled="true">Registration opens soon</a></div>
     <p class="label" id="regSub">Registration link coming soon</p>
   </div>
@@ -644,7 +672,7 @@ footer .org{grid-column:1/-1;justify-self:center;margin:4px 0 0;font-size:13px;c
     btn.rel = "noopener";
     btn.removeAttribute("aria-disabled");
     btn.textContent = "Register now →";
-    document.getElementById("regSub").textContent = "Open until 7 Jan 2570 or until 30 seats are filled";
+    document.getElementById("regSub").textContent = "Open until 7 Jan 2570 · Type 2: first 30 confirmed, then substitutes";
   }
 
   /* ---- Participant list (read from the published Google Sheet) ----
@@ -654,9 +682,10 @@ footer .org{grid-column:1/-1;justify-self:center;margin:4px 0 0;font-size:13px;c
   const SHEET_CSV_URL = "";
   const SEATS = 30;   // type 2 seats; number 31 onwards are substitutes
 
-  // A "ประเภทของโครงการที่สนใจเข้าร่วม" answer containing any of these words counts as type 2 (onsite).
+  // Form choices: "ประเภทที่ 1: Online ทั้ง 2 วัน" / "ประเภทที่ 2: Online วันที่ 1 และ Onsite วันที่ 2".
+  // An answer containing any of these words counts as type 2 (onsite).
   // Everything else counts as type 1 (online).
-  const TYPE2_WORDS = ["onsite", "on-site", "on site", "ออนไซต์", "ภาคปฏิบัติ", "ปฏิบัติ", "hands-on", "ณ โรงเรียน", "ณ สถานที่", "type 2", "ประเภท 2", "ประเภทที่ 2"];
+  const TYPE2_WORDS = ["ประเภทที่ 2", "ประเภท 2", "onsite", "on-site", "on site"];
 
   (function loadParticipants() {
     const status = document.getElementById("listStatus");
@@ -721,8 +750,8 @@ footer .org{grid-column:1/-1;justify-self:center;margin:4px 0 0;font-size:13px;c
         document.getElementById("subBlock").hidden = subs.length === 0;
         document.getElementById("lists").hidden = false;
         status.textContent = confirmed.length >= SEATS
-          ? "Type 2 ครบ 30 ท่านแล้ว ผู้ลงทะเบียนเพิ่มเติมจะอยู่ในรายชื่อสำรอง"
-          : "Type 2 เหลือที่นั่ง " + (SEATS - confirmed.length) + " ที่";
+          ? "ประเภทที่ 2 ครบ 30 ท่านแล้ว ผู้ลงทะเบียนเพิ่มเติมจะอยู่ในรายชื่อสำรอง"
+          : "ประเภทที่ 2 เหลือที่นั่ง " + (SEATS - confirmed.length) + " ที่";
       })
       .catch(() => { status.textContent = "ไม่สามารถโหลดรายชื่อได้ในขณะนี้ กรุณาลองใหม่ภายหลัง"; });
   })();
