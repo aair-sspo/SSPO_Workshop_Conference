@@ -183,6 +183,19 @@ p{margin:0 0 14px;max-width:65ch}
 .lists > div{background:var(--white);border-radius:var(--r);box-shadow:var(--shadow);padding:22px}
 .type-card{display:grid;gap:6px;align-content:start}
 .type-card .dates{margin:8px 0 6px}
+.type-top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 10px}
+.type-note{font-family:var(--type);font-weight:500;font-size:13px;color:var(--muted)}
+.type-note.std{color:var(--ink);background:var(--yellow);border-radius:999px;padding:2px 12px}
+.types .standard{outline:2px solid var(--pink-ink);outline-offset:-2px}
+.days{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:10px}
+.day{display:grid;grid-template-columns:62px 1fr;gap:12px;align-items:start;background:var(--paper);border-radius:16px;padding:12px 14px}
+.dno{font-family:var(--display);font-weight:600;font-size:15px;color:var(--lav-ink);padding-top:2px}
+.day time{display:block;font-family:var(--type);font-weight:600;font-size:14px}
+.day p{margin:4px 0 0;font-size:15px;line-height:1.5}
+.mode{display:inline-flex;align-items:center;gap:6px;margin-top:6px;font-family:var(--type);font-weight:600;font-size:13px;border:1.5px solid var(--line);border-radius:999px;padding:2px 12px 2px 9px}
+.mode svg{width:16px;height:16px}
+.mode.online{background:var(--blue)}
+.mode.onsite{background:var(--pink)}
 .type-tag{justify-self:start;margin:0;font-family:var(--type);font-weight:500;font-size:13px;border:1.5px solid var(--line);border-radius:999px;padding:1px 12px;background:var(--blue)}
 .type-tag.pink{background:var(--pink)}
 .type-title{font-family:var(--display);font-weight:600;font-size:28px;line-height:1.1;letter-spacing:-.04em;color:var(--lav-strong);margin:0}
@@ -542,7 +555,7 @@ footer .org{grid-column:1/-1;justify-self:center;margin:4px 0 0;font-size:13px;c
       <article class="session">
         <h3>Day 2 · <i>hands-on</i></h3>
         <p class="when">Thu 28 Jan 2570 · 09:00–16:30 · SSPO</p>
-        <p class="where">ภาคปฏิบัติ ณ โรงเรียนกายอุปกรณ์สิรินธร (ประเภทที่ 2) · ประเภทที่ 1 เข้าร่วมแบบออนไลน์</p>
+        <p class="where">ภาคปฏิบัติ ณ โรงเรียนกายอุปกรณ์สิรินธร (ประเภทที่ 2) · ประเภทที่ 1 เข้าร่วมผ่าน Zoom</p>
         <ol class="agenda">
           <li class="brk"><time>08:30–09:00</time><span>ลงทะเบียน</span></li>
           <li><time>09:00–10:00</time><span>บทนำ: กายอุปกรณ์ดิจิทัลและกระบวนการทำงานแบบดิจิทัลของ Instalimb</span></li>
@@ -562,24 +575,24 @@ footer .org{grid-column:1/-1;justify-self:center;margin:4px 0 0;font-size:13px;c
 <section class="section" id="types">
   <div class="wrap">
     <h2>two ways <b>to join</b></h2>
-    <div class="lists two">
+    <div class="lists two types">
       <div class="type-card">
-        <p class="type-tag">ประเภทที่ 1</p>
-        <h3 class="type-title">Online <b>both days</b></h3>
-        <ol class="dates">
-          <li><time>21 Jan 2570 · 14:00–17:00</time><span>ภาคบรรยายผ่าน Zoom</span></li>
-          <li><time>28 Jan 2570 · 09:00–16:30</time><span>เข้าร่วมกิจกรรมภาคปฏิบัติแบบออนไลน์</span></li>
+        <div class="type-top"><p class="type-tag">ประเภทที่ 1</p><span class="type-note">สำหรับผู้ที่ไม่สามารถเดินทางมาได้</span></div>
+        <h3 class="type-title">All <b>online</b></h3>
+        <p class="type-sub">เข้าร่วมทั้ง 2 วันผ่าน Zoom · ไม่จำกัดจำนวน</p>
+        <ol class="days">
+          <li class="day"><span class="dno">Day 1</span><div><time>21 ม.ค. 2570 · 14:00–17:00</time><span class="mode online"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="6" width="13" height="12" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15.5 10.5l6-3.5v10l-6-3.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>Online · Zoom</span><p>ภาคบรรยาย</p></div></li>
+          <li class="day"><span class="dno">Day 2</span><div><time>28 ม.ค. 2570 · 09:00–16:30</time><span class="mode online"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="6" width="13" height="12" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15.5 10.5l6-3.5v10l-6-3.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>Online · Zoom</span><p>ภาคปฏิบัติ รับชมและร่วมกิจกรรมผ่าน Zoom</p></div></li>
         </ol>
-        <p class="type-sub">ไม่จำกัดจำนวน</p>
       </div>
-      <div class="type-card">
-        <p class="type-tag pink">ประเภทที่ 2</p>
+      <div class="type-card standard">
+        <div class="type-top"><p class="type-tag pink">ประเภทที่ 2</p><span class="type-note std">★ แบบมาตรฐาน</span></div>
         <h3 class="type-title">Online + <b>onsite</b></h3>
-        <ol class="dates">
-          <li><time>21 Jan 2570 · 14:00–17:00</time><span>ภาคบรรยายผ่าน Zoom</span></li>
-          <li class="key"><time>28 Jan 2570 · 09:00–16:30</time><span>ฝึกปฏิบัติ ณ โรงเรียนกายอุปกรณ์สิรินธร</span></li>
+        <p class="type-sub">วันที่ 1 ผ่าน Zoom · วันที่ 2 ฝึกปฏิบัติที่โรงเรียนฯ · รับ 30 ท่านแรก (ลำดับที่ 31 เป็นต้นไปเป็นรายชื่อสำรอง)</p>
+        <ol class="days">
+          <li class="day"><span class="dno">Day 1</span><div><time>21 ม.ค. 2570 · 14:00–17:00</time><span class="mode online"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="6" width="13" height="12" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15.5 10.5l6-3.5v10l-6-3.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>Online · Zoom</span><p>ภาคบรรยาย</p></div></li>
+          <li class="day"><span class="dno">Day 2</span><div><time>28 ม.ค. 2570 · 09:00–16:30</time><span class="mode onsite"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="9.5" r="2.5" fill="none" stroke="currentColor" stroke-width="2"/></svg>Onsite · SSPO</span><p>ภาคปฏิบัติ ณ โรงเรียนกายอุปกรณ์สิรินธร (ลงทะเบียน 08:30)</p></div></li>
         </ol>
-        <p class="type-sub">รับ 30 ท่านแรกเท่านั้น ลำดับที่ 31 เป็นต้นไปเป็นรายชื่อสำรอง</p>
       </div>
     </div>
     <p class="lead"><strong>ต้องเข้าร่วมให้ครบทั้ง 2 วัน</strong> (ประเภทใดประเภทหนึ่ง) จึงจะได้รับคะแนน CPD ทั้งนี้คะแนนจะแตกต่างกันตามประเภทการเข้าร่วม</p>
@@ -605,7 +618,7 @@ footer .org{grid-column:1/-1;justify-self:center;margin:4px 0 0;font-size:13px;c
         <li class="key"><time>7 Jan 2570</time><span>ปิดรับสมัคร</span></li>
         <li class="key"><time>11 Jan 2570</time><span>ประกาศรายชื่อผู้มีสิทธิ์เข้าร่วม</span></li>
         <li><time>21 Jan 2570</time><span>ภาคบรรยายออนไลน์ (Zoom)</span></li>
-        <li><time>28 Jan 2570</time><span>ภาคปฏิบัติ: ประเภทที่ 2 ณ โรงเรียนกายอุปกรณ์สิรินธร · ประเภทที่ 1 แบบออนไลน์</span></li>
+        <li><time>28 Jan 2570</time><span>ภาคปฏิบัติ: ประเภทที่ 2 ณ โรงเรียนฯ · ประเภทที่ 1 ผ่าน Zoom</span></li>
       </ol>
     </div>
   </div>
@@ -619,16 +632,16 @@ footer .org{grid-column:1/-1;justify-self:center;margin:4px 0 0;font-size:13px;c
     <div class="lists two" id="lists" hidden>
       <div class="type-card">
         <p class="type-tag">ประเภทที่ 1</p>
-        <h3 class="type-title">Online <b>both days</b></h3>
-        <p class="type-sub">Online ทั้ง 2 วัน · ไม่จำกัดจำนวน</p>
+        <h3 class="type-title">All <b>online</b></h3>
+        <p class="type-sub">Online ผ่าน Zoom ทั้ง 2 วัน · ไม่จำกัดจำนวน</p>
         <h4 class="list-head">Registered <span id="t1Count"></span></h4>
         <ol class="names" id="t1List"></ol>
         <p class="list-empty" id="t1Empty" hidden>ยังไม่มีผู้ลงทะเบียน</p>
       </div>
       <div class="type-card">
-        <p class="type-tag pink">ประเภทที่ 2</p>
+        <p class="type-tag pink">ประเภทที่ 2 · แบบมาตรฐาน</p>
         <h3 class="type-title">Online + <b>onsite</b></h3>
-        <p class="type-sub">Online วันที่ 1 และ Onsite วันที่ 2 ณ โรงเรียนกายอุปกรณ์สิรินธร · รับ 30 ท่านแรก ลำดับที่ 31 เป็นต้นไปเป็นรายชื่อสำรอง และจะได้รับการติดต่อหากมีผู้สละสิทธิ์</p>
+        <p class="type-sub">วันที่ 1 Online ผ่าน Zoom · วันที่ 2 Onsite ณ โรงเรียนกายอุปกรณ์สิรินธร · รับ 30 ท่านแรก ลำดับที่ 31 เป็นต้นไปเป็นรายชื่อสำรอง และจะได้รับการติดต่อหากมีผู้สละสิทธิ์</p>
         <h4 class="list-head">Confirmed <span id="t2Count"></span></h4>
         <ol class="names" id="t2List"></ol>
         <p class="list-empty" id="t2Empty" hidden>ยังไม่มีผู้ลงทะเบียน</p>
@@ -644,7 +657,7 @@ footer .org{grid-column:1/-1;justify-self:center;margin:4px 0 0;font-size:13px;c
 <section class="section lav" id="register">
   <div class="wrap">
     <h2>sign <b>me up</b></h2>
-    <p class="lead">ลงทะเบียนผ่านแบบฟอร์มออนไลน์ และเลือกประเภทที่ 1 (Online ทั้ง 2 วัน) หรือประเภทที่ 2 (Online วันที่ 1 และ Onsite วันที่ 2 รับ 30 ท่านแรก) ผู้มีสิทธิ์เข้าร่วมจะได้รับการแจ้งทางอีเมลภายในวันที่ 11 มกราคม 2570</p>
+    <p class="lead">ลงทะเบียนผ่านแบบฟอร์มออนไลน์ และเลือกประเภทที่ 2 แบบมาตรฐาน (วันที่ 1 Online ผ่าน Zoom และวันที่ 2 Onsite ที่โรงเรียนฯ รับ 30 ท่านแรก) หรือประเภทที่ 1 สำหรับผู้ที่ไม่สามารถเดินทางมาได้ (Online ผ่าน Zoom ทั้ง 2 วัน) ผู้มีสิทธิ์เข้าร่วมจะได้รับการแจ้งทางอีเมลภายในวันที่ 11 มกราคม 2570</p>
     <div class="actions"><a class="btn" id="regBtn" aria-disabled="true">Registration opens soon</a></div>
     <p class="label" id="regSub">Registration link coming soon</p>
   </div>
