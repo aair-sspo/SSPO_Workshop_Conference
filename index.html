@@ -56,6 +56,7 @@
 
 *{box-sizing:border-box}
 [hidden]{display:none!important}
+[id]{scroll-margin-top:96px}
 html{scroll-behavior:smooth}
 body{margin:0;background-color:var(--paper);background-image:var(--noise);color:var(--ink);font-family:var(--thai);font-size:16px;line-height:1.7;display:flex;flex-direction:column;min-height:100vh;overflow-x:hidden}
 main{flex:1}
@@ -180,6 +181,14 @@ p{margin:0 0 14px;max-width:65ch}
 
 /* ===== Participant list ===== */
 .lists > div{background:var(--white);border-radius:var(--r);box-shadow:var(--shadow);padding:22px}
+.type-card{display:grid;gap:6px;align-content:start}
+.type-tag{justify-self:start;margin:0;font-family:var(--type);font-weight:500;font-size:13px;border:1.5px solid var(--line);border-radius:999px;padding:1px 12px;background:var(--blue)}
+.type-tag.pink{background:var(--pink)}
+.type-title{font-family:var(--display);font-weight:600;font-size:28px;line-height:1.1;letter-spacing:-.04em;color:var(--lav-strong);margin:0}
+.type-title b{font-family:var(--script);font-weight:400;font-size:1.4em;letter-spacing:0;color:var(--pink-script)}
+.type-sub{font-size:14px;line-height:1.55;color:var(--muted);margin:0 0 10px}
+.list-head{margin-top:6px}
+.sub-head{margin-top:22px;color:var(--pink-ink)}
 .list-status{font-weight:600;margin:0}
 .list-head{font-family:var(--type);font-weight:600;font-size:15px;margin:0 0 8px;padding-bottom:8px;border-bottom:1.5px solid var(--line)}
 .list-head span{color:var(--muted);font-weight:500}
@@ -577,20 +586,30 @@ footer .org{grid-column:1/-1;justify-self:center;margin:4px 0 0;font-size:13px;c
 <section class="section" id="participants">
   <div class="wrap">
     <h2>participant <b>list</b></h2>
-    <p class="lead">รายชื่อผู้สมัครเรียงตามลำดับการลงทะเบียน 30 ท่านแรกได้รับสิทธิ์เข้าร่วม ท่านถัดไปอยู่ในรายชื่อสำรอง และจะได้รับสิทธิ์ตามลำดับหากมีผู้สละสิทธิ์</p>
+    <p class="lead">รายชื่อผู้ลงทะเบียน เรียงตามลำดับเวลาที่ลงทะเบียน แบ่งตามประเภทการเข้าร่วม</p>
     <p class="list-status" id="listStatus">รายชื่อจะแสดงเมื่อเปิดรับสมัคร</p>
     <div class="lists two" id="lists" hidden>
-      <div>
-        <h3 class="list-head">Confirmed <span id="confirmedCount"></span></h3>
-        <ol class="names" id="confirmedList"></ol>
+      <div class="type-card">
+        <p class="type-tag">type 1</p>
+        <h3 class="type-title">Online <b>lecture</b></h3>
+        <p class="type-sub">ภาคบรรยายออนไลน์ผ่าน Zoom · ไม่จำกัดจำนวน</p>
+        <h4 class="list-head">Registered <span id="t1Count"></span></h4>
+        <ol class="names" id="t1List"></ol>
+        <p class="list-empty" id="t1Empty" hidden>ยังไม่มีผู้ลงทะเบียน</p>
       </div>
-      <div>
-        <h3 class="list-head">Backup <span id="backupCount"></span></h3>
-        <ol class="names backup" id="backupList"></ol>
-        <p class="list-empty" id="backupEmpty" hidden>ยังไม่มีรายชื่อสำรอง</p>
+      <div class="type-card">
+        <p class="type-tag pink">type 2</p>
+        <h3 class="type-title">Onsite <b>hands-on</b></h3>
+        <p class="type-sub">ภาคบรรยาย + ภาคปฏิบัติ ณ โรงเรียนกายอุปกรณ์สิรินธร · รับ 30 ท่านแรก ลำดับที่ 31 เป็นต้นไปเป็นรายชื่อสำรอง และจะได้รับการติดต่อหากมีผู้สละสิทธิ์</p>
+        <h4 class="list-head">Confirmed <span id="t2Count"></span></h4>
+        <ol class="names" id="t2List"></ol>
+        <p class="list-empty" id="t2Empty" hidden>ยังไม่มีผู้ลงทะเบียน</p>
+        <div id="subBlock" hidden>
+          <h4 class="list-head sub-head">Substitute · รอการติดต่อ <span id="subCount"></span></h4>
+          <ol class="names backup" id="subList"></ol>
+        </div>
       </div>
     </div>
-    <p class="label" id="listUpdated"></p>
   </div>
 </section>
 
@@ -628,43 +647,82 @@ footer .org{grid-column:1/-1;justify-self:center;margin:4px 0 0;font-size:13px;c
     document.getElementById("regSub").textContent = "Open until 7 Jan 2570 or until 30 seats are filled";
   }
 
-  /* ---- Participant list ----
-     Paste the Apps Script web app link between the quotes,
-     e.g. "https://script.google.com/macros/s/xxxx/exec" */
-  const LIST_URL = "";
+  /* ---- Participant list (read from the published Google Sheet) ----
+     Paste the CSV link of the names-only sheet tab between the quotes.
+     It looks like: https://docs.google.com/spreadsheets/d/e/2PACX-.../pub?gid=123456&single=true&output=csv
+     Use a tab that holds ONLY timestamp, name and type (see README). */
+  const SHEET_CSV_URL = "";
+  const SEATS = 30;   // type 2 seats; number 31 onwards are substitutes
+
+  // A "ประเภทของโครงการที่สนใจเข้าร่วม" answer containing any of these words counts as type 2 (onsite).
+  // Everything else counts as type 1 (online).
+  const TYPE2_WORDS = ["onsite", "on-site", "on site", "ออนไซต์", "ภาคปฏิบัติ", "ปฏิบัติ", "hands-on", "ณ โรงเรียน", "ณ สถานที่", "type 2", "ประเภท 2", "ประเภทที่ 2"];
 
   (function loadParticipants() {
     const status = document.getElementById("listStatus");
-    if (!LIST_URL) return;
+    if (!SHEET_CSV_URL) return;
     status.textContent = "กำลังโหลดรายชื่อ…";
 
-    function fill(listEl, names) {
-      listEl.replaceChildren(...names.map(n => {
-        const li = document.createElement("li");
-        li.textContent = n;
-        return li;
+    function parseCSV(text) {
+      const rows = []; let row = [], field = "", quoted = false;
+      for (let i = 0; i < text.length; i++) {
+        const c = text[i];
+        if (quoted) {
+          if (c === '"') { if (text[i + 1] === '"') { field += '"'; i++; } else quoted = false; }
+          else field += c;
+        } else if (c === '"') quoted = true;
+        else if (c === ",") { row.push(field); field = ""; }
+        else if (c === "\n") { row.push(field); rows.push(row); row = []; field = ""; }
+        else if (c !== "\r") field += c;
+      }
+      if (field || row.length) { row.push(field); rows.push(row); }
+      return rows;
+    }
+    const col = (headers, re) => headers.findIndex(h => re.test(h));
+    function fill(id, names) {
+      document.getElementById(id).replaceChildren(...names.map(n => {
+        const li = document.createElement("li"); li.textContent = n; return li;
       }));
     }
 
-    fetch(LIST_URL)
-      .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
-      .then(data => {
-        if (data.error) throw new Error(data.error);
-        const confirmed = data.confirmed || [], backup = data.backup || [], seats = data.seats || 30;
-        if (confirmed.length === 0) { status.textContent = "ยังไม่มีผู้สมัคร"; return; }
-        fill(document.getElementById("confirmedList"), confirmed);
-        fill(document.getElementById("backupList"), backup);
-        document.getElementById("confirmedCount").textContent = confirmed.length + " / " + seats;
-        document.getElementById("backupCount").textContent = backup.length ? "· " + backup.length : "";
-        document.getElementById("backupEmpty").hidden = backup.length > 0;
+    fetch(SHEET_CSV_URL, { cache: "no-store" })
+      .then(r => { if (!r.ok) throw new Error(r.status); return r.text(); })
+      .then(text => {
+        const rows = parseCSV(text);
+        const headers = (rows.shift() || []).map(h => h.trim());
+        const nameCol = (() => { let i = col(headers, /ชื่อ.*นามสกุล.*ไทย/); return i >= 0 ? i : col(headers, /ชื่อ/); })();
+        const prefixCol = col(headers, /คำนำหน้า/);
+        const typeCol = col(headers, /ประเภท|type/i);
+        const statusCol = col(headers, /สถานะ|status/i);
+        if (nameCol < 0) throw new Error("no name column");
+
+        const t1 = [], t2 = [];
+        rows.forEach(r => {
+          const name = (r[nameCol] || "").trim();
+          if (!name) return;
+          if (statusCol >= 0 && /ยกเลิก|สละสิทธิ์|cancel/i.test(r[statusCol] || "")) return;
+          const prefix = prefixCol >= 0 ? (r[prefixCol] || "").trim() : "";
+          const shown = prefix && !name.startsWith(prefix) ? prefix + " " + name : name;
+          const type = (typeCol >= 0 ? r[typeCol] || "" : "").toLowerCase();
+          (TYPE2_WORDS.some(w => type.includes(w.toLowerCase())) ? t2 : t1).push(shown);
+        });
+
+        if (!t1.length && !t2.length) { status.textContent = "ยังไม่มีผู้ลงทะเบียน"; return; }
+        const confirmed = t2.slice(0, SEATS), subs = t2.slice(SEATS);
+        fill("t1List", t1);
+        fill("t2List", confirmed);
+        fill("subList", subs);
+        document.getElementById("subList").start = SEATS + 1;
+        document.getElementById("t1Count").textContent = "· " + t1.length;
+        document.getElementById("t2Count").textContent = confirmed.length + " / " + SEATS;
+        document.getElementById("subCount").textContent = subs.length ? "· " + subs.length : "";
+        document.getElementById("t1Empty").hidden = t1.length > 0;
+        document.getElementById("t2Empty").hidden = confirmed.length > 0;
+        document.getElementById("subBlock").hidden = subs.length === 0;
         document.getElementById("lists").hidden = false;
-        status.textContent = confirmed.length >= seats
-          ? "ที่นั่งเต็มแล้ว ผู้สมัครเพิ่มเติมจะอยู่ในรายชื่อสำรอง"
-          : "เหลือที่นั่ง " + (seats - confirmed.length) + " ที่";
-        if (data.updated) {
-          const t = new Date(data.updated);
-          document.getElementById("listUpdated").textContent = "Updated " + t.toLocaleString("th-TH", { dateStyle: "medium", timeStyle: "short" });
-        }
+        status.textContent = confirmed.length >= SEATS
+          ? "Type 2 ครบ 30 ท่านแล้ว ผู้ลงทะเบียนเพิ่มเติมจะอยู่ในรายชื่อสำรอง"
+          : "Type 2 เหลือที่นั่ง " + (SEATS - confirmed.length) + " ที่";
       })
       .catch(() => { status.textContent = "ไม่สามารถโหลดรายชื่อได้ในขณะนี้ กรุณาลองใหม่ภายหลัง"; });
   })();
